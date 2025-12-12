@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "epitrello",
   "type": "module",
   "private": true,
   "scripts": {
@@ -8,11 +8,12 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "prettier -c .",
-    "lint:fix": "prettier -w .",
+    "lint": "eslint . && prettier -c .",
+    "lint:fix": "eslint . --fix && prettier -w .",
     "auth:schema": "better-auth generate --config ./server/utils/auth.ts",
     "db:generate": "prisma generate",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "prepare": "husky"
   },
   "dependencies": {
     "@nuxt/image": "2.0.0",
@@ -29,10 +30,16 @@
   },
   "devDependencies": {
     "@better-auth/cli": "^1.4.5",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@iconify-json/hugeicons": "^1.2.19",
+    "@nuxt/eslint": "^1.12.1",
     "@types/node": "^24.10.1",
     "dotenv": "^17.2.3",
+    "eslint": "^9.39.1",
+    "husky": "^9.1.7",
     "prettier": "^3.7.4",
-    "prisma": "^7.1.0"
+    "prisma": "^7.1.0",
+    "typescript": "^5.9.3"
   }
 }
