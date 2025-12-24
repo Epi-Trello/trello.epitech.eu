@@ -44,11 +44,20 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     class="space-y-4 max-w-xs"
     @submit.prevent="onSubmit"
   >
-    <UFormField label="Email" name="email">
-      <UInput v-model="state.email" class="w-full" />
+    <UFormField
+      label="Email"
+      name="email"
+    >
+      <UInput
+        v-model="state.email"
+        class="w-full"
+      />
     </UFormField>
 
-    <UFormField label="Password" name="password">
+    <UFormField
+      label="Password"
+      name="password"
+    >
       <UInput
         v-model="state.password"
         :type="show ? 'text' : 'password'"
@@ -69,6 +78,12 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </UInput>
     </UFormField>
 
-    <UButton type="submit" icon="i-hugeicons-login-01" block> Log In </UButton>
+    <UButton
+      type="submit"
+      icon="i-hugeicons-login-01"
+      block
+    >
+      Log In
+    </UButton>
   </UForm>
 </template>
