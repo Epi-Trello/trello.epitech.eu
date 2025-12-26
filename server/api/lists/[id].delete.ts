@@ -6,9 +6,9 @@ export default defineEventHandler(async (event) => {
   }
 
   const id = getRouterParam(event, 'id')
-  const board = await prisma.list.delete({
-    where: { id, ownerId: session.user.id }
+  const list = await prisma.list.delete({
+    where: { id, board: { ownerId: session.user.id } }
   })
 
-  return board
+  return list
 })

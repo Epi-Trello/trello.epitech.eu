@@ -7,10 +7,10 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   const body = await readBody(event)
-  const board = await prisma.list.update({
-    where: { id, ownerId: session.user.id },
+  const list = await prisma.list.update({
+    where: { id, board: { ownerId: session.user.id } },
     data: body
   })
 
-  return board
+  return list
 })
