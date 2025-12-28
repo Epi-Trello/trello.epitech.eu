@@ -6,3 +6,7 @@ export const ListInputSchema = z.object({
   color: z.enum(['GRAY', 'RED', 'YELLOW', 'GREEN', 'SKY', 'BLUE', 'VIOLET', 'PINK']).optional(),
   boardId: z.string()
 })
+
+export const BoardInputSchema = z.object({
+  name: z.string().max(255)
+})
