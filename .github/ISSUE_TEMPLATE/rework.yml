@@ -1,6 +1,7 @@
 name: '♻️ Rework'
 description: Restructuring or modifying existing code without adding new features
 labels: ['pending triage']
+projects: ['epi-trello/1']
 type: rework
 body:
   - type: textarea
