@@ -7,31 +7,47 @@ definePageMeta({
 <template>
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">Bienvenue</p>
+      <p class="eyebrow">
+        Bienvenue
+      </p>
       <h1>Gérez vos projets en toute simplicité</h1>
       <p class="lead">
         Une interface claire pour suivre vos tâches, collaborer avec votre équipe et
         garder une vue d&apos;ensemble sur vos priorités.
       </p>
       <div class="cta">
-        <NuxtLink to="/login" class="btn primary">Se connecter</NuxtLink>
-        <button type="button" class="btn ghost">Découvrir</button>
+        <NuxtLink
+          to="/login"
+          class="btn primary"
+        >Se connecter</NuxtLink>
+        <button
+          type="button"
+          class="btn ghost"
+        >
+          Découvrir
+        </button>
       </div>
     </section>
 
     <section class="grid">
       <article class="card">
-        <div class="icon">📌</div>
+        <div class="icon">
+          📌
+        </div>
         <h2>Organisation</h2>
         <p>Classez vos tâches, définissez des échéances et restez aligné.</p>
       </article>
       <article class="card">
-        <div class="icon">🤝</div>
+        <div class="icon">
+          🤝
+        </div>
         <h2>Collaboration</h2>
         <p>Partagez l&apos;avancement avec votre équipe et évitez les surprises.</p>
       </article>
       <article class="card">
-        <div class="icon">📈</div>
+        <div class="icon">
+          📈
+        </div>
         <h2>Suivi</h2>
         <p>Gardez un œil sur les indicateurs clés et mesurez vos progrès.</p>
       </article>
