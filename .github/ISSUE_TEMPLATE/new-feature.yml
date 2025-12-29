@@ -1,6 +1,7 @@
 name: '🚀 New feature'
 description: New feature that will improve EpiTrello
 labels: ['pending triage']
+type: feature
 body:
   - type: textarea
     id: feature-description
