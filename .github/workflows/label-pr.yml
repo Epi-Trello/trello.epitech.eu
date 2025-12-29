@@ -25,7 +25,7 @@ jobs:
 
             const pr = {
               number: ${{ github.event.pull_request.number }},
-              title: process.env.PULL_REQUEST_TITLE,
+              title: process.env.PULL_REQUEST_TITLE
             }
 
             const typeMapping = {
@@ -45,7 +45,7 @@ jobs:
             }
 
             const regex = /^([a-z]+)(?:\(([^)]+)\))?:/
-            const match = title.match(regex)
+            const match = pr.title.match(regex)
 
             if (match) {
               const type = match[1]
