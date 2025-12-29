@@ -45,15 +45,17 @@ jobs:
               client: 'frontend'
             }
 
-            const regex = /^([a-z]+)(?:\(([^)]+)\))?:/
+            const regex = /^([a-z]+)(?:\(([^)]+)\))?(!)?:/
             const match = pr.title.match(regex)
 
             if (match) {
               const type = match[1]
               const scope = match[2]
+              const isBreaking = !!match[3]
 
               console.log(`Detected Type: ${type || 'N/A'}`)
               console.log(`Detected Scope: ${scope || 'N/A'}`)
+              console.log(`Detected Breaking: ${isBreaking ? 'Yes' : 'No'}`)
 
               if (type && typeMapping[type]) {
                 labelsToAdd.push(typeMapping[type])
@@ -61,6 +63,10 @@ jobs:
 
               if (scope && scopeMapping[scope]) {
                 labelsToAdd.push(scopeMapping[scope])
+              }
+
+              if (isBreaking) {
+                labelsToAdd.push('BREAKING CHANGE')
               }
 
               if (labelsToAdd.length > 0) {
