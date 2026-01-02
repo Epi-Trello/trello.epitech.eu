@@ -1,15 +1,8 @@
 <script setup lang="ts">
-defineProps<{
-  activeTab: 'tableaux' | 'modeles' | 'accueil'
-}>()
+const route = useRoute()
 
-const emit = defineEmits<{
-  'update:activeTab': [value: 'tableaux' | 'modeles' | 'accueil']
-}>()
-
-function setActiveTab(tab: 'tableaux' | 'modeles' | 'accueil') {
-  emit('update:activeTab', tab)
-  console.log('Tab changed to:', tab)
+const isActive = (path: string) => {
+  return route.path === path || route.path.startsWith(path + '/')
 }
 </script>
 
@@ -23,15 +16,14 @@ function setActiveTab(tab: 'tableaux' | 'modeles' | 'accueil') {
     </div>
 
     <nav class="space-y-1">
-      <button
-        type="button"
+      <NuxtLink
+        to="/tableaux"
         :class="[
           'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition',
-          activeTab === 'tableaux'
+          isActive('/tableaux')
             ? 'bg-slate-800 text-white'
             : 'text-slate-300 hover:bg-slate-800 hover:text-white'
         ]"
-        @click="setActiveTab('tableaux')"
       >
         <svg
           class="h-5 w-5"
@@ -47,16 +39,15 @@ function setActiveTab(tab: 'tableaux' | 'modeles' | 'accueil') {
           />
         </svg>
         Tableaux
-      </button>
-      <button
-        type="button"
+      </NuxtLink>
+      <NuxtLink
+        to="/modeles"
         :class="[
           'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition',
-          activeTab === 'modeles'
+          isActive('/modeles')
             ? 'bg-slate-800 text-white'
             : 'text-slate-300 hover:bg-slate-800 hover:text-white'
         ]"
-        @click="setActiveTab('modeles')"
       >
         <svg
           class="h-5 w-5"
@@ -72,16 +63,15 @@ function setActiveTab(tab: 'tableaux' | 'modeles' | 'accueil') {
           />
         </svg>
         Modèles
-      </button>
-      <button
-        type="button"
+      </NuxtLink>
+      <NuxtLink
+        to="/accueil"
         :class="[
           'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition',
-          activeTab === 'accueil'
+          isActive('/accueil')
             ? 'bg-slate-800 text-white'
             : 'text-slate-300 hover:bg-slate-800 hover:text-white'
         ]"
-        @click="setActiveTab('accueil')"
       >
         <svg
           class="h-5 w-5"
@@ -97,7 +87,7 @@ function setActiveTab(tab: 'tableaux' | 'modeles' | 'accueil') {
           />
         </svg>
         Accueil
-      </button>
+      </NuxtLink>
     </nav>
 
     <div class="mt-8">
