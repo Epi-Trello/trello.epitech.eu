@@ -11,7 +11,16 @@ interface Board {
   memberCount: number
 }
 
-const boards = ref<Board[]>([])
+const boards = ref<Board[]>([
+  {
+    id: 'example-1',
+    title: 'Exemple de tableau',
+    cover: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+    isPrivate: true,
+    members: ['MB', 'AP'],
+    memberCount: 2
+  }
+])
 const isModalOpen = ref(false)
 const isLoading = ref(false)
 
@@ -115,30 +124,7 @@ function openCreateModal() {
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <!-- Bouton créer un tableau -->
-        <button
-          type="button"
-          @click="openCreateModal"
-          class="group flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-700 bg-slate-800/30 transition hover:border-sky-500 hover:bg-slate-800/50"
-        >
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 transition group-hover:bg-sky-500/30">
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-          </div>
-          <p class="text-sm font-semibold text-slate-300">
-            Créer un tableau
-          </p>
-        </button>
+        
 
         <!-- Liste des tableaux -->
         <article
@@ -194,6 +180,31 @@ function openCreateModal() {
             </button>
           </div>
         </article>
+
+        <button
+          type="button"
+          @click="openCreateModal"
+          class="group flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-700 bg-slate-800/30 transition hover:border-sky-500 hover:bg-slate-800/50"
+        >
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 transition group-hover:bg-sky-500/30">
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-300">
+            Créer un tableau
+          </p>
+        </button>
       </div>
     </div>
   </main>
