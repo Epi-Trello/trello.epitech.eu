@@ -104,19 +104,7 @@ function openCreateModal() {
   <main class="flex-1 overflow-y-auto bg-slate-900 p-6">
     <div class="mx-auto max-w-7xl">
       <div class="mb-6 flex items-center gap-2">
-        <svg
-          class="h-4 w-4 text-slate-400"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          />
-        </svg>
+        <UIcon name="i-hugeicons-user-group" class="h-4 w-4 text-slate-400" />
         <h2 class="text-lg font-semibold text-white">
           Vos tableaux
         </h2>
@@ -127,10 +115,11 @@ function openCreateModal() {
         
 
         <!-- Liste des tableaux -->
-        <article
+        <UCard
           v-for="board in boards"
           :key="board.id"
-          class="group relative overflow-hidden rounded-xl border border-slate-800 bg-slate-800/50 transition hover:-translate-y-1 hover:border-slate-700 hover:shadow-xl"
+          class="group relative overflow-hidden cursor-pointer transition hover:-translate-y-1 bg-slate-800/50 ring-1 ring-slate-800"
+          :ui="{ body: 'p-0', header: 'p-0' }"
         >
           <!-- Cover du tableau -->
           <div
@@ -148,13 +137,15 @@ function openCreateModal() {
                 {{ board.isPrivate ? 'Privé' : 'Public' }} • {{ board.memberCount }} membre{{ board.memberCount > 1 ? 's' : '' }}
               </p>
               <div class="flex -space-x-2">
-                <span
+                <UAvatar
                   v-for="member in board.members.slice(0, 3)"
                   :key="member"
-                  class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-slate-800 bg-slate-700 text-[10px] font-semibold text-white"
+                  :alt="member"
+                  size="xs"
+                  class="bg-slate-700 ring-2 ring-slate-800"
                 >
-                  {{ member }}
-                </span>
+                  <span class="text-[10px] font-semibold text-white">{{ member }}</span>
+                </UAvatar>
               </div>
             </div>
           </div>
@@ -165,46 +156,36 @@ function openCreateModal() {
               <span class="h-2 w-2 rounded-full bg-emerald-400" />
               Actif
             </div>
-            <button
-              type="button"
-              class="opacity-0 text-slate-400 transition group-hover:opacity-100 hover:text-white"
+            <UButton
+              icon="i-hugeicons-menu-vertical-01"
+              color="neutral"
+              variant="ghost"
+              size="xs"
+              class="opacity-0 transition group-hover:opacity-100"
               aria-label="Options"
-            >
-              <svg
-                class="h-4 w-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-              </svg>
-            </button>
+            />
           </div>
-        </article>
+        </UCard>
 
-        <button
-          type="button"
+        <!-- Bouton créer un tableau -->
+        <UCard
+          class="group flex min-h-[200px] cursor-pointer items-center justify-center border-2 border-dashed border-slate-700 bg-slate-800/30 transition hover:border-sky-500 hover:bg-slate-800/50"
+          :ui="{ body: 'p-0', header: 'p-0' }"
           @click="openCreateModal"
-          class="group flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-700 bg-slate-800/30 transition hover:border-sky-500 hover:bg-slate-800/50"
         >
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 transition group-hover:bg-sky-500/30">
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
+          <div class="flex flex-col items-center gap-3">
+            <UButton
+              icon="i-hugeicons-plus"
+              color="primary"
+              variant="soft"
+              size="lg"
+              square
+            />
+            <p class="text-sm font-semibold text-slate-300">
+              Créer un tableau
+            </p>
           </div>
-          <p class="text-sm font-semibold text-slate-300">
-            Créer un tableau
-          </p>
-        </button>
+        </UCard>
       </div>
     </div>
   </main>
