@@ -2,6 +2,11 @@
 definePageMeta({
   auth: false
 })
+
+// Rediriger vers /tableaux par défaut
+onMounted(() => {
+  navigateTo('/tableaux')
+})
 </script>
 
 <template>
